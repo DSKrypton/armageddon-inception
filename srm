@@ -8,7 +8,8 @@
 
 # Checking & creating RECYCLE directory
 mkdir -p ~/RECYCLE
-bin_path="~/RECYCLE"
+bin_path=~/RECYCLE
+
 
 how_to_use() {
 	echo "type srm @filename or  srm @directory name to remove file while saving archived copy in ~/RECYCLE for a week"
@@ -22,6 +23,12 @@ fi
 
 #checking file existence
 if [ ! -f $1 ] && [ ! -d $1 ] ; then
-	echo $1 : No such file or directory
+	echo $1: No such file or directory
 	how_to_use
 fi
+
+#main part of the script
+echo 'Archiving following files:'
+tar -czvf $bin_path/$1_$(date +"%d_%m_%Y_%I-%M-%S").tar.gz $1
+rm -r $1
+
