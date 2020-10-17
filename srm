@@ -1,0 +1,19 @@
+#!/bin/bash
+#srm aka safe remove
+#goal is to allow restoration of removed files
+# script applies gzip to removed by it files and puts result into ~/RECYCLE directory
+#final deletion of archives comes week later
+
+
+
+# Checking & creating RECYCLE directory
+mkdir -p ~/RECYCLE
+bin_path="~/RECYCLE"
+
+#checking file existence
+if ! [ -e $1 ] 
+then
+	echo $1 file not found
+else
+	echo TODO main part
+fi
