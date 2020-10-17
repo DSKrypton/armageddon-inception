@@ -11,5 +11,5 @@ for example by following chain of commands:
 
 ## How to use
 To remove file or directory **<name>** in your current directory execute `srm <name>` command. 
-All removed this way objects will be compressed into **<name>_<datetime>.tar.gz** and moved to **~/RECYCLE**
+All removed this way objects will be compressed into **<name>_<datetime>.tar.gz** and moved to **~/RECYCLE**.
 Keep in mind that archives automatically deleted after 1 week.
