@@ -10,7 +10,10 @@
 mkdir -p ~/RECYCLE
 bin_path=~/RECYCLE
 
+#deleting old archives
+find $bin_path -mtime +7 -delete
 
+#error message
 how_to_use() {
 	echo "type srm @filename or  srm @directory name to remove file while saving archived copy in ~/RECYCLE for a week"
 	exit 1
