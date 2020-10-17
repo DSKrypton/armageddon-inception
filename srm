@@ -10,10 +10,18 @@
 mkdir -p ~/RECYCLE
 bin_path="~/RECYCLE"
 
+how_to_use() {
+	echo "type srm @filename or  srm @directory name to remove file while saving archived copy in ~/RECYCLE for a week"
+	exit 1
+}
+
+#checking input existence
+if [ -z $1 ] ; then
+	how_to_use
+fi
+
 #checking file existence
-if ! [ -e $1 ] 
-then
-	echo $1 file not found
-else
-	echo TODO main part
+if [ ! -f $1 ] && [ ! -d $1 ] ; then
+	echo $1 : No such file or directory
+	how_to_use
 fi
