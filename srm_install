@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#srm aka safe remove installation script
+#just make this installation script executable and run. 
+#Then you can enjoy srm feature anytime
+
+mkdir -p ~/bin
+echo "export PATH=${PATH}:~/bin" >> ~/.bash_profile
+source ~/.bash_profile
+
+chmod ug+x ./srm
+mv ./srm ~/bin
+echo "srm was successfully installed"

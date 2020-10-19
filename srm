@@ -1,0 +1,37 @@
+#!/bin/bash
+#srm aka safe remove
+#goal is to allow restoration of removed files
+# script applies gzip to removed by itself files and puts result into ~/RECYCLE directory
+#final deletion of archives comes week later
+
+
+
+# Checking & creating RECYCLE directory
+mkdir -p ~/RECYCLE
+bin_path=~/RECYCLE
+
+#deleting old archives
+find $bin_path -mtime +7 -delete
+
+#error message
+how_to_use() {
+	echo "type srm @filename or  srm @directory name to remove file while saving archived copy in ~/RECYCLE for a week"
+	exit 1
+}
+
+#checking input existence
+if [ -z $1 ] ; then
+	how_to_use
+fi
+
+#checking file existence
+if [ ! -f $1 ] && [ ! -d $1 ] ; then
+	echo $1: No such file or directory
+	how_to_use
+fi
+
+#main part of the script
+echo 'Archiving following files:'
+tar -czvf $bin_path/$1_$(date +"%d_%m_%Y_%I-%M-%S").tar.gz $1
+rm -r $1
+
